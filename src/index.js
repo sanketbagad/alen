@@ -10,8 +10,7 @@ ReactDOM.render(
     <Router>
     <App />
   </Router>
-  </ResultContextProvider>
-  ,
+  </ResultContextProvider>,
   document.getElementById('root')
 );
 
