@@ -64,12 +64,12 @@ const Results = () => {
                                  <p className="text-lg dark:text-blue-300 text-blue-700">
                                      {title}
                                  </p>
+                            </a>
                             <div className="flex gap-4">
                                 <a href={source?.href} target="_blank" rel="norefferer noreferrer" className="hover:underline">
                                     {source?.href}
                                 </a>
                             </div>
-                            </a>
                         </div>
                     ))} 
                 </div>
