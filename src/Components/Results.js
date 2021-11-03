@@ -6,7 +6,7 @@ import { useResultContext } from '../Contexts/ResultContextProvider'
 import Loading from './Loading'
 
 const Results = () => {
-    const { result: {results, image_results, entries: news}, isLoading, getResults, searchTerm} = useResultContext()
+    const { result, isLoading, getResults, searchTerm} = useResultContext()
     const location = useLocations()
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const Results = () => {
        case "/search":
            return (
                <div className="flex flex-wrap justify-between space-y-6 sm:px-56 ">
-                   {results?.map(({ link, title}, index) => (
+                   {result?.map(({ link, title}, index) => (
                        <div key={index} className="md:w-2/5 w-full" >
                            <a href={link} target="_blank" rel="norefferer noreferrer">
                                 <p className="text-sm">
@@ -44,7 +44,7 @@ const Results = () => {
         case "/images":
             return (
                 <div className="flex flex-wrap justify-center items-center">
-                    {image_results?.map(({ image, link: { href, title}}, index) => (
+                    {result?.map(({ image, link: { href, title}}, index) => (
                         <a className="sm:p-3 p-5" href={href} key={index} target="_blank" rel="norefferer noreferrer">
                             <img className="" src={image?.src} alt={title} loading="lazy" />
                             <p className="text-sm w-36 break-words mt-2">
@@ -58,7 +58,7 @@ const Results = () => {
         case "/news":
             return (
                 <div className="flex flex-wrap items-center justify-between space-y-6 sm:px-56 ">
-                    {news?.map(({ links, title, source, id}) => (
+                    {result?.map(({ links, title, source, id}) => (
                         <div key={id} className="md:w-2/5 w-full" >
                             <a href={links?.[0].href} target="_blank" rel="norefferer noreferrer" className="hover:underline">
                                  <p className="text-lg dark:text-blue-300 text-blue-700">
@@ -76,7 +76,15 @@ const Results = () => {
             )
 
         case "/videos":
-            return ""
+            return (
+                <div className="flex flex-wrap">
+                    {result.map((video, index) => (
+                        <div key={index} >
+                            
+                         </div>
+                    ))}
+                </div>
+            )
    
        default:
            return "Error"
